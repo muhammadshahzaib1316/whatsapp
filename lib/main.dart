@@ -1,4 +1,4 @@
-import 'package:class1/whatsapp/chart%20_view.dart';
+import 'package:class1/postscreeen/facebook.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: ChatView2(), debugShowCheckedModeBanner: false);
+    return MaterialApp(home: postpost(), debugShowCheckedModeBanner: false);
   }
 }
 //

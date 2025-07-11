@@ -1,5 +1,6 @@
-import 'package:class1/whatsapp/chats_view_title.dart';
 import 'package:flutter/material.dart';
+
+import 'charts.dart';
 
 Widget communities() {
   return ListView(

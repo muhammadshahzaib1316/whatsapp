@@ -1,5 +1,6 @@
-import 'package:class1/whatsapp/chats_view_title.dart';
 import 'package:flutter/material.dart';
+
+import 'charts.dart';
 
 Widget updates() {
   return ListView(
@@ -47,61 +48,106 @@ Widget updates() {
 }
 
 Widget status() {
+  final List<User> users = [
+    User(
+      name: 'ali',
+      image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+    ),
+    User(
+      name: 'maryum',
+      image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+    ),
+    User(
+      name: 'ali',
+      image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+    ),
+    User(
+      name: 'maryum',
+      image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+    ),
+    User(
+      name: 'ali',
+      image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+    ),
+    User(
+      name: 'maryum',
+      image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+    ),
+    User(
+      name: 'ali',
+      image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+    ),
+    User(
+      name: 'maryum',
+      image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+    ),
+    User(
+      name: 'ali',
+      image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+    ),
+    User(
+      name: 'maryum',
+      image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+    ),
+  ];
   return SingleChildScrollView(
     scrollDirection: Axis.horizontal,
 
     child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Container(
-          height: 80,
-          width: 80,
-          color: const Color.fromARGB(31, 35, 1, 48),
-        ),
-        Container(
-          height: 80,
-          width: 80,
-          color: const Color.fromARGB(255, 58, 21, 21),
-        ),
-        Container(
-          height: 80,
-          width: 80,
-          color: const Color.fromARGB(31, 71, 111, 172),
-        ),
-        Container(
-          height: 80,
-          width: 80,
-          color: const Color.fromARGB(31, 35, 1, 48),
-        ),
-        Container(
-          height: 80,
-          width: 80,
-          color: const Color.fromARGB(255, 58, 21, 21),
-        ),
-        Container(
-          height: 80,
-          width: 80,
-          color: const Color.fromARGB(31, 71, 111, 172),
-        ),
-        Container(
-          height: 80,
-          width: 80,
-          color: const Color.fromARGB(31, 35, 1, 48),
-        ),
-        Container(
-          height: 80,
-          width: 80,
-          color: const Color.fromARGB(255, 58, 21, 21),
-        ),
-        Container(
-          height: 80,
-          width: 80,
-          color: const Color.fromARGB(31, 71, 111, 172),
-        ),
-      ],
+      children:
+          users.map((user) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Container(
+                    height: 100,
+                    width: 70,
+                    color: const Color.fromARGB(255, 156, 80, 9),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.green, width: 2),
+                        ),
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(user.image),
+                          radius: 12,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 8),
+                  Text(user.name),
+                ],
+              ),
+            );
+          }).toList(),
     ),
   );
 }
+
+class User {
+  final String name;
+  final String image;
+
+  User({required this.name, required this.image});
+}
+
+//
+//
 
 //
 //
@@ -114,6 +160,36 @@ Widget channels() {
         color: const Color.fromARGB(255, 0, 0, 0),
         fontWeight: FontWeight.w900,
       ),
+    ),
+  );
+}
+//
+//
+//
+//
+//
+//
+//
+//
+
+Widget status1(Title, msg, url) {
+  return ListTile(
+    title: Text("$Title", style: TextStyle(color: Colors.black)),
+    subtitle: Text("$msg", style: TextStyle(color: Colors.black45)),
+    trailing: Icon(Icons.check),
+
+    //
+    leading: GestureDetector(
+      onTap: () {
+        // DP pe click karne par jo action lena hai wo yahan likhein
+
+        Container(
+          width: 200,
+          height: 200,
+          child: Image.network(url, fit: BoxFit.cover),
+        );
+      },
+      child: CircleAvatar(backgroundImage: NetworkImage(url)),
     ),
   );
 }

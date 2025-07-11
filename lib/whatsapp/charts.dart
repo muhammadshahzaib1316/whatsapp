@@ -14,7 +14,7 @@ Widget chats() {
         ),
       ),
 
-      opp(), ///////////
+      allunread(), ///////////
       //
       //
       //
@@ -24,6 +24,16 @@ Widget chats() {
       // ),
       ListTile(leading: Icon(Icons.search_outlined), title: Text("search")),
 
+      // ListView.builder(
+      //   itemCount: Chats.length,
+      //   itemBuilder: (context, i) {
+      //     return custumChatstitle(
+      //       "${Chats[i]["name"]}",
+      //       "${Chats[i]['msg']}",
+      //       "${Chats[i]['url']}",
+      //     );
+      //   },
+      // ),
       //
       //
       //
@@ -93,3 +103,80 @@ Widget chats() {
     ],
   );
 }
+
+Widget custumChatstitle(name, msg, url) {
+  return ListTile(
+    title: Text("$name", style: TextStyle(color: Colors.black)),
+    subtitle: Text("$msg", style: TextStyle(color: Colors.black45)),
+    trailing: Icon(Icons.check),
+
+    leading: CircleAvatar(backgroundImage: NetworkImage(url)),
+    // leading: GestureDetector(
+    //   onTap: () => openDP(context, url),
+    //   child: Container(
+    //     width: double.infinity,
+    //     height: double.infinity,
+    //     child: Image.network(url, fit: BoxFit.cover),
+    //   ),
+    // ),
+
+    //
+    //     leading: GestureDetector(
+    //       onTap: () {
+    //         // DP pe click karne par jo action lena hai wo yahan likhein
+
+    //         Container(
+    //           width: 200,
+    //           height: 200,
+    //           child: Image.network(url, fit: BoxFit.cover),
+    //         );
+    //       },
+    //       child: CircleAvatar(backgroundImage: NetworkImage(url)),
+    //     ),
+  );
+}
+
+List Chats = [
+  {
+    'name': "Maryum",
+    'msg': "heellllo",
+    'url':
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+  },
+  {
+    'name': "Maryum",
+    'msg': "heellllo",
+    'url':
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+  },
+  {
+    'name': "Maryum",
+    'msg': "heellllo",
+    'url':
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+  },
+  {
+    'name': "Maryum",
+    'msg': "heellllo",
+    'url':
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+  },
+  {
+    'name': "Maryum",
+    'msg': "heellllo",
+    'url':
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+  },
+  {
+    'name': "Maryum",
+    'msg': "heellllo",
+    'url':
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+  },
+  {
+    'name': "Maryum",
+    'msg': "heellllo",
+    'url':
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+  },
+];

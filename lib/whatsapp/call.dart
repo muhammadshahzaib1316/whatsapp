@@ -34,6 +34,10 @@ Widget call() {
           "    To start calling contacts who have whatsapp , tap at bottom of your screen.",
         ),
       ),
+      IconButton(
+        onPressed: () {},
+        icon: Icon(Icons.add_ic_call_outlined, color: Colors.black38),
+      ),
     ],
   );
 }

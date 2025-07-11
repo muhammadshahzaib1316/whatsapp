@@ -2,8 +2,8 @@ import 'package:class1/whatsapp/chats_view_title.dart';
 import 'package:class1/whatsapp/whatsapphomepage.dart';
 import 'package:flutter/material.dart';
 
-class ChatView2 extends StatelessWidget {
-  const ChatView2({super.key});
+class Whatsapp extends StatelessWidget {
+  const Whatsapp({super.key});
 
   @override
   Widget build(BuildContext context) {
