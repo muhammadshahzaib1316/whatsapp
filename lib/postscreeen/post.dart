@@ -1,25 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class post1 extends StatefulWidget {
-//   const post1({super.key});
-
-//   @override
-//   State<post1> createState() => _post1();
-// }
-
-// class _post1 extends State<post1> {
-//   TextEditingController postContentController = TextEditingController();
-//   List post1 = [];
-//   addPost() {
-//     post1.add({'content': postContentController.text, 'images'});
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Placeholder();
-//   }
-// }
-
 import 'package:flutter/material.dart';
 
 class PostView extends StatefulWidget {
@@ -73,8 +51,10 @@ class _PostViewState extends State<PostView> {
             child: ListView.builder(
               itemCount: posts.length,
               itemBuilder: (context, index) {
-                return Container(
+                return Card(
+                  margin: EdgeInsets.all(10),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("${posts[index]['content']}"),
                       // Image.network(posts[index]['images'][0]),
@@ -94,6 +74,7 @@ class _PostViewState extends State<PostView> {
           ),
         ],
       ),
+      // backgroundColor: Color(Colors.),
     );
   }
 }

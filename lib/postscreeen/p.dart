@@ -1,70 +1,222 @@
 import 'package:flutter/material.dart';
 
-class p extends StatelessWidget {
+class mm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: NotificationCenter());
+    return MaterialApp(home: VideoPage());
   }
 }
 
-class NotificationCenter extends StatelessWidget {
+class VideoPage extends StatefulWidget {
+  @override
+  _VideoPageState createState() => _VideoPageState();
+}
+
+class _VideoPageState extends State<VideoPage> {
+  bool _isFullScreen = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Notifications')),
-      body: Column(
+      body:
+          _isFullScreen
+              ? FullScreenVideo(
+                onBackPressed: () {
+                  setState(() {
+                    _isFullScreen = false;
+                  });
+                },
+              )
+              : Column(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _isFullScreen = true;
+                              });
+                            },
+                            child: Stack(
+                              children: [
+                                Image.network(
+                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFIBRgFwm_P5YkKLtW-syY4CLm8lROv3fcJA&s',
+                                  width: 130,
+                                  height: 200,
+                                  fit: BoxFit.cover,
+                                ),
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: Colors.green,
+                                        width: 4,
+                                      ),
+                                    ),
+                                    child: CircleAvatar(
+                                      backgroundImage: NetworkImage(
+                                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFIBRgFwm_P5YkKLtW-syY4CLm8lROv3fcJA&s',
+                                      ),
+                                      radius: 18,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+    );
+  }
+}
+
+class FullScreenVideo extends StatelessWidget {
+  final VoidCallback onBackPressed;
+
+  FullScreenVideo({required this.onBackPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              NotificationIcon(icon: Icons.home, notifications: 19),
-              NotificationIcon(icon: Icons.person, notifications: 0),
-              NotificationIcon(icon: Icons.videocam, notifications: 0),
-              NotificationIcon(icon: Icons.arrow_right, notifications: 99),
-            ],
+          Image.network(
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFIBRgFwm_P5YkKLtW-syY4CLm8lROv3fcJA&s',
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              NotificationIcon(icon: Icons.add_circle, notifications: 0),
-              NotificationIcon(icon: Icons.search, notifications: 4),
-              NotificationIcon(icon: Icons.message, notifications: 4),
-            ],
+          Positioned(
+            top: 10,
+            left: 10,
+            child: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: onBackPressed,
+            ),
+          ),
+          Positioned(
+            right: 10,
+            top: 10,
+            child: Column(
+              children: [
+                IconButton(icon: Icon(Icons.thumb_up), onPressed: () {}),
+                IconButton(icon: Icon(Icons.thumb_down), onPressed: () {}),
+                IconButton(icon: Icon(Icons.comment), onPressed: () {}),
+                IconButton(icon: Icon(Icons.share), onPressed: () {}),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 10,
+            left: 10,
+            right: 10,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Message',
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
           ),
         ],
       ),
     );
   }
 }
+// //
+// //
+// //
+// //
+// //
+// //
 
-class NotificationIcon extends StatelessWidget {
-  final IconData icon;
-  final int notifications;
+// Widget s(context) {
+//   return IconButton(
+//     onPressed: () {
+//       Navigator.push(
+//         context,
+//         MaterialPageRoute(
+//           builder:
+//               (context) => FancyBox(
+//                 image:
+//                     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s',
+//                 avatarImage:
+//                     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s',
+//                 title: 'ali',
+//                 nextScreen: Text("data"),
+//               ),
+//         ),
+//       );
+//     },
+//     icon: Icon(Icons.image),
+//   );
+// }
 
-  NotificationIcon({required this.icon, required this.notifications});
+// class FancyBox extends StatelessWidget {
+//   final String image;
+//   final String avatarImage;
+//   final String title;
+//   final Widget nextScreen;
 
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Icon(icon),
-        if (notifications > 0)
-          Positioned(
-            top: 0,
-            right: 0,
-            child: Container(
-              padding: EdgeInsets.all(2),
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(
-                notifications.toString(),
-                style: TextStyle(fontSize: 12),
-              ),
-            ),
-          ),
-      ],
-    );
-  }
-}
+//   FancyBox({
+//     required this.image,
+//     required this.avatarImage,
+//     required this.title,
+//     required this.nextScreen,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       onTap: () {
+//         Navigator.push(
+//           context,
+//           MaterialPageRoute(builder: (context) => nextScreen),
+//         );
+//       },
+//       child: Container(
+//         height: 200,
+//         width: 300,
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(20),
+//           image: DecorationImage(image: NetworkImage(image), fit: BoxFit.cover),
+//         ),
+//         child: Stack(
+//           children: [
+//             Positioned(
+//               top: 10,
+//               left: 10,
+//               child: CircleAvatar(
+//                 backgroundImage: NetworkImage(avatarImage),
+//                 radius: 30,
+//               ),
+//             ),
+//             Positioned(
+//               bottom: 10,
+//               left: 10,
+//               child: Text(
+//                 title,
+//                 style: TextStyle(
+//                   color: Colors.white,
+//                   fontSize: 20,
+//                   fontWeight: FontWeight.bold,
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'charts.dart';
 
-Widget updates() {
+Widget search() {
   return ListView(
     children: <Widget>[
       ListTile(
@@ -15,6 +15,11 @@ Widget updates() {
           ),
         ),
       ),
+      // status1(
+      //   'ali',
+      //   'asd',
+      //   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s',
+      // ),
       status(),
       channels(),
       custumChatstitle(

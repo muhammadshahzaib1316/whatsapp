@@ -1,32 +1,60 @@
-import 'package:class1/postscreeen/facebookhomepage.dart';
+// import 'package:class1/postscreeen/facebookhomepage.dart';
+// import 'package:flutter/material.dart';
+
+// class postpost extends StatefulWidget {
+//   const postpost({super.key});
+
+//   @override
+//   State<postpost> createState() => _postpostState();
+// }
+
+// class _postpostState extends State<postpost> {
+//   TextEditingController postcontroller = TextEditingController();
+//   List posts = [];
+//   addpost() {
+//     posts.add({
+//       'conent': postcontroller,
+//       'images': [
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
+//       ],
+//     });
+//   }
+import 'package:class1/postscreeen/account.dart';
+import 'package:class1/postscreeen/home.dart';
+import 'package:class1/postscreeen/notification.dart';
+import 'package:class1/postscreeen/people.dart';
+import 'package:class1/postscreeen/reels.dart';
+import 'package:class1/postscreeen/seting.dart';
 import 'package:flutter/material.dart';
 
-class postpost extends StatefulWidget {
-  const postpost({super.key});
-
+class Facebookhomepage extends StatefulWidget {
   @override
-  State<postpost> createState() => _postpostState();
+  _TabBarPageState createState() => _TabBarPageState();
 }
 
-class _postpostState extends State<postpost> {
-  TextEditingController postcontroller = TextEditingController();
-  List posts = [];
-  addpost() {
-    posts.add({
-      'conent': postcontroller,
-      'images': [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSolggrjGKR49mTGSgX6VDMgdnw61kvuj8VkQ&s",
-      ],
-    });
+class _TabBarPageState extends State<Facebookhomepage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 7, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override
@@ -47,61 +75,72 @@ class _postpostState extends State<postpost> {
             icon: Icon(Icons.messenger_outline_outlined),
           ),
         ],
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: [
+            Tab(icon: Icon(Icons.home)),
+            Tab(icon: Icon(Icons.video_collection_outlined)),
+            Tab(icon: Icon(Icons.people)),
+            Tab(icon: Icon(Icons.account_circle)),
+            Tab(icon: Icon(Icons.notifications)),
+            Tab(icon: Icon(Icons.settings)),
+            Tab(icon: Icon(Icons.picture_in_picture_rounded)),
+          ],
+        ),
       ),
-      body: Column(
+      body: TabBarView(
+        controller: _tabController,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              NotificationIcon(icon: Icons.home, notifications: 0),
-              NotificationIcon(
-                icon: Icons.video_collection_rounded,
-                notifications: 10,
-              ),
-              NotificationIcon(icon: Icons.person_pin_sharp, notifications: 0),
-              NotificationIcon(icon: Icons.person_3, notifications: 0),
-              NotificationIcon(
-                icon: Icons.notification_add_outlined,
-                notifications: 99,
-              ),
-              NotificationIcon(icon: Icons.arrow_right, notifications: 0),
-            ],
-          ),
+          HomeTab(),
+          reelsTab(),
+          peopleTab(),
+          acountTab(),
+          notificationTab(),
+          setingTab(),
         ],
       ),
     );
-    Facebookhomepage();
   }
 }
 
-class NotificationIcon extends StatelessWidget {
-  final IconData icon;
-  final int notifications;
-
-  NotificationIcon({required this.icon, required this.notifications});
-
+class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Icon(icon),
-        if (notifications > 0)
-          Positioned(
-            top: 0,
-            right: 0,
-            child: Container(
-              padding: EdgeInsets.all(2),
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(
-                notifications.toString(),
-                style: TextStyle(fontSize: 12),
-              ),
-            ),
-          ),
-      ],
-    );
+    return home(context);
+  }
+}
+
+class reelsTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return reels();
+  }
+}
+
+class peopleTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return people();
+  }
+}
+
+class acountTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return account();
+  }
+}
+
+class notificationTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return notification();
+  }
+}
+
+class setingTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return setting();
   }
 }
